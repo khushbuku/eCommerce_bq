@@ -1,4 +1,4 @@
-connection: "finance_data"
+connection: "thelook"
 
 # include all the views
 include: "/views/**/*.view.lkml"
@@ -11,11 +11,13 @@ datagroup: ecommerce_demo_default_datagroup {
 persist_with: ecommerce_demo_default_datagroup
 
 explore: bqml_model_info {}
-explore: function {}
+# explore: function {}
 
 explore: employee {}
 
 explore: events {
+  view_label: "recruiting.dv_job_application_employee_referral.view_label"
+
   join: users {
     type: left_outer
     sql_on: ${events.user_id} = ${users.id} ;;
